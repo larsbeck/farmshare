@@ -6,7 +6,6 @@ import com.google.ortools.constraintsolver.FirstSolutionStrategy;
 import com.google.ortools.constraintsolver.RoutingIndexManager;
 import com.google.ortools.constraintsolver.RoutingModel;
 import com.google.ortools.constraintsolver.RoutingSearchParameters;
-
 import com.google.ortools.constraintsolver.main;
 import com.google.protobuf.Duration;
 
