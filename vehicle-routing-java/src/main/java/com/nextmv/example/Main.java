@@ -43,6 +43,17 @@ public final class Main {
     // Define cost of each arc.
     routing.setArcCostEvaluatorOfAllVehicles(transitCallbackIndex);
 
+    // Add Distance constraint.
+    routing.addDimension(transitCallbackIndex, 0, options.getMaxTravelDuration(),
+        true, // start cumul to zero
+        "Distance");
+
+    // Allow unplanning stops.
+    for (int i = 0; i < input.distanceMatrix.length; i++) {
+        long[] indices = { manager.nodeToIndex(i) };
+        routing.addDisjunction(indices, options.getUnplannedPenalty());
+    }
+
     // Set the duration of the search.
     Duration duration = Duration.newBuilder().setSeconds(options.getDuration()).build();
 
@@ -104,6 +115,7 @@ public final class Main {
     return new Output(
         vehicles,
         duration,
-        runDuration);
+        runDuration,
+        input.distanceMatrix.length-1);
   }
 }

@@ -4,11 +4,15 @@ public class Options {
   private final String inputPath;
   private final String outputPath;
   private final int duration;
+  private final int unplannedPenalty;
+  private final int maxTravelDuration;
 
-  public Options(String inputPath, String outputPath, int duration) {
+  public Options(String inputPath, String outputPath, int duration, int unplannedPenalty, int maxTravelDuration) {
     this.inputPath = inputPath;
     this.outputPath = outputPath;
     this.duration = duration;
+    this.unplannedPenalty = unplannedPenalty;
+    this.maxTravelDuration = maxTravelDuration;
   }
 
   public String getInputPath() {
@@ -23,10 +27,22 @@ public class Options {
     return this.duration;
   }
 
+  public int getUnplannedPenalty() {
+    return this.unplannedPenalty;
+  }
+
+  public int getMaxTravelDuration() {
+    return this.maxTravelDuration;
+  }
+
   public static Options fromArguments(String[] args) {
     String inputPath = "";
     String outputPath = "";
     int duration = 30;
+    // set maxTravelDuration to max int
+    int maxTravelDuration = Integer.MAX_VALUE;
+    // set unplannedPenalty to max int
+    int unplannedPenalty = Integer.MAX_VALUE;
 
     for (int i = 0; i < args.length; ++i) {
       switch (args[i]) {
@@ -42,6 +58,14 @@ public class Options {
         case "--duration":
           duration = Integer.parseInt(args[++i]);
           break;
+        case "-td":
+        case "--max.travel.duration":
+          maxTravelDuration = Integer.parseInt(args[++i]);
+          break;
+        case "-p":
+        case "--unplanned.penalty":
+          unplannedPenalty = Integer.parseInt(args[++i]);
+          break;
         case "-h":
         case "--help":
           System.out.println("Usage: java -jar basic_example.jar [OPTIONS]");
@@ -51,6 +75,8 @@ public class Options {
           System.out.println("  -i, --input: path to the input file");
           System.out.println("  -o, --output: path to the output file");
           System.out.println("  -d, --duration: duration of the search in seconds");
+          System.out.println("  -td, --max.travel.duration: maximum travel duration");
+          System.out.println("  -p, --unplanned.penalty: penalty for unplanned nodes");
           System.out.println("  -h, --help: print the help");
           System.exit(0);
           break;
@@ -60,6 +86,6 @@ public class Options {
       }
     }
 
-    return new Options(inputPath, outputPath, duration);
+    return new Options(inputPath, outputPath, duration, unplannedPenalty, maxTravelDuration);
   }
 }

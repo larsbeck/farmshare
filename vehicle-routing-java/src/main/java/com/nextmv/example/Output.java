@@ -31,6 +31,8 @@ public class Output {
     private int minStopsInVehicle;
     @SerializedName(value = "max_stops_in_vehicle")
     private int maxStopsInVehicle;
+    @SerializedName(value = "unplanned_stops")
+    private int unplannedStops;
   }
 
   private final class Statistics {
@@ -45,7 +47,8 @@ public class Output {
   public Output(
       List<Vehicle> vehicles,
       double duration,
-      double runDuration) {
+      double runDuration,
+      int totalNumberOfStops) {
     this.solutions = new ArrayList<Solution>();
     Solution solution = new Solution();
     solution.vehicles = vehicles;
@@ -79,7 +82,12 @@ public class Output {
 
     // Find the vehicle with the minimum number of stops.
     this.statistics.result.custom.minStopsInVehicle = (int) vehicles.stream()
-        .mapToDouble(v -> v.getStops().size()-2).min().orElse(0);
+        .mapToDouble(v -> v.getStops().size() - 2).min().orElse(0);
+        
+    // Find the number of unplanned stops.
+    long servedStops = vehicles.stream()
+        .mapToLong(v -> v.getStops().stream().filter(s -> s != 0).count()).sum();
+    this.statistics.result.custom.unplannedStops = totalNumberOfStops - (int) servedStops;
   }
 
   public static void write(String path, Output output) {
