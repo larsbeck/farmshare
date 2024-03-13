@@ -4,3 +4,7 @@ venv/
 
 # Outputs
 *output*.json
+
+# build files
+target/
+main.jar
