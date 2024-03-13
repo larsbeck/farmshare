@@ -21,7 +21,7 @@
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
-        "operator": "gt"
+        "operator": "lt"
       }
     },
     {
@@ -29,7 +29,7 @@
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
-        "operator": "gt"
+        "operator": "ge"
       }
     },
     {
