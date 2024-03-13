@@ -5,7 +5,7 @@
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
-        "operator": "lt"
+        "operator": "gt"
       }
     },
     {
@@ -17,19 +17,19 @@
       }
     },
     {
-      "field": "result.custom.max_travel_duration",
+      "field": "result.custom.max_route_distance",
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
-        "operator": "lt"
+        "operator": "gt"
       }
     },
     {
-      "field": "result.custom.min_travel_duration",
+      "field": "result.custom.min_stops_in_vehicle",
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
-        "operator": "lt"
+        "operator": "gt"
       }
     },
     {
@@ -41,7 +41,7 @@
       }
     },
     {
-      "field": "result.custom.min_stops_in_vehicle",
+      "field": "result.custom.max_stops_in_vehicle",
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
