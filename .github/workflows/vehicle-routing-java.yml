@@ -1,0 +1,17 @@
+name: vehicle-routing-java
+
+on:
+  push:
+    paths:
+      - "vehicle-routing-java/**"
+    branches:
+      - stable
+
+jobs:
+  vehicle-routing-java:
+    uses: ./.github/workflows/nextmv.yml
+    with:
+      APP_ID: farm-share-or-tools-java
+      APP_DIRECTORY: ./vehicle-routing-java
+    secrets:
+      NEXTMV_API_KEY: ${{ secrets.NEXTMV_API_KEY }}
