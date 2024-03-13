@@ -41,11 +41,11 @@
       }
     },
     {
-      "field": "result.custom.max_stops_in_vehicle",
+      "field": "result.custom.unplanned_stops",
       "statistic": "mean",
       "metric_type": "direct-comparison",
       "params": {
-        "operator": "lt"
+        "operator": "le"
       }
     }
   ]
