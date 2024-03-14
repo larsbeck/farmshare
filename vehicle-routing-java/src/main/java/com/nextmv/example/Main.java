@@ -53,7 +53,7 @@ public final class Main {
     }
 
     // Set the duration of the search.
-    Duration duration = Duration.newBuilder().setSeconds(options.getDuration()).build();
+    Duration duration = Duration.newBuilder().setSeconds(3000).build();
 
     // Setting first solution heuristic.
     RoutingSearchParameters searchParameters = main.defaultRoutingSearchParameters()
