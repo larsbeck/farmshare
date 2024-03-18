@@ -42,7 +42,7 @@ public final class Main {
     routing.setArcCostEvaluatorOfAllVehicles(transitCallbackIndex);
 
     // Add Distance constraint.
-    routing.addDimension(transitCallbackIndex, 0, options.getMaxTravelDuration(),
+    routing.addDimension(transitCallbackIndex, 0, options.getMaxTravelDistance(),
         true, // start cumul to zero
         "Distance");
 
