@@ -40,7 +40,7 @@ public class Options {
     String outputPath = "";
     int duration = 30;
     // set maxTravelDistance to max int
-    int maxTravelDistance = 3000;
+    int maxTravelDistance = Integer.MAX_VALUE;
     // set unplannedPenalty to max int
     int unplannedPenalty = Integer.MAX_VALUE;
 
